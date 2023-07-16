@@ -32,6 +32,7 @@ body {
     display: flex;
     justify-content: flex-end;
     align-items: start;
+    border-radius: 10px;
 }
 
 .result {
@@ -49,10 +50,12 @@ body {
 button[data-control] {
     flex: 1 1 50%;
     gap: 20px;
+    border-radius: 10px;
 }
 
 button[data-operator], button[data-num], #equal, #dot {
     flex: 1 1 25%;
+    border-radius: 10px;
 }
 
 button[data-control]{
