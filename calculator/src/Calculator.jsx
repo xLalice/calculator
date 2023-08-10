@@ -30,6 +30,11 @@ const Calculator = () => {
     
 
     function handleOperatorClick(btn) {
+      const lastCharacter = expression.slice(-1);
+      if (lastCharacter === "+" || lastCharacter === "-" || lastCharacter === "*" || lastCharacter === "/") {
+        return; 
+      }
+  
       if (expression.endsWith("=")) {
         setExpression(display + btn);
       } else {
@@ -39,17 +44,20 @@ const Calculator = () => {
     }
     
     function evaluateExpression() {
-      try {
-        const calculatedResult = eval(expression);
-        const newExpression = `${expression}=${calculatedResult}`;
-        
-        setDisplay(calculatedResult);
-        setExpression(newExpression);
-      } catch (error) {
-        setDisplay("Error");
-        setExpression("");
+      if (!expression.endsWith("=") && !isNaN(expression.slice(-1))) {
+        try {
+          const calculatedResult = eval(expression);
+          const newExpression = `${expression}=${calculatedResult}`;
+          
+          setDisplay(calculatedResult.toString());
+          setExpression(newExpression);
+        } catch (error) {
+          setDisplay("Error");
+          setExpression("");
+        }
       }
     }
+    
 
     function clear() {
       setDisplay("0");

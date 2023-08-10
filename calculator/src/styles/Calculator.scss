@@ -29,6 +29,19 @@ $light-color: #EEEEEE;
   height: 120px;
 }
 
+.expression-display {
+  font-size: 18px;
+  color: #999;
+}
+
+.result-display {
+  font-size: 36px;
+}
+
+.display h3 {
+  margin: 0;
+}
+
 .button-container {
   grid-column: 1 / span 4;
   display: grid;
