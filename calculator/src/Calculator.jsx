@@ -32,11 +32,10 @@ const Calculator = () => {
     
 
     function handleOperatorClick(btn) {
-      const lastCharacter = expression.slice(-1);
-      if (lastCharacter === "+" || lastCharacter === "-" || lastCharacter === "*" || lastCharacter === "/") {
-        return; 
+      if (expression === "" || isNaN(expression.slice(-1))) {
+        return; // Prevent adding operators without numbers
       }
-  
+    
       if (expression.endsWith("=")) {
         setExpression(display + btn);
       } else {
