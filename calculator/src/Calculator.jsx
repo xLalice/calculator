@@ -14,12 +14,14 @@ const Calculator = () => {
 
     const [display, setDisplay] = React.useState("0")
     const [expression, setExpression] = React.useState("")
+    const [isResultDisplayed, setIsResultDisplayed] = React.useState(false)
     
     function handleNumClick(btn) {
       let newExpression = expression;
-      if (display === "0" || expression.endsWith("=")) {
+      if (display === "0" || isResultDisplayed) {
         newExpression = btn;
         setDisplay(btn); 
+        setIsResultDisplayed(false)
       } else {
         newExpression += btn;
         setDisplay(prevDisplay => prevDisplay + btn);
@@ -51,6 +53,7 @@ const Calculator = () => {
           
           setDisplay(calculatedResult.toString());
           setExpression(newExpression);
+          setIsResultDisplayed(true)
         } catch (error) {
           setDisplay("Error");
           setExpression("");
