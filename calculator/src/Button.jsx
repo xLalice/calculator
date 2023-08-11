@@ -1,8 +1,18 @@
-export default function Button({ btn, evaluateExpression, clear, handleNumClick, handleOperatorClick }) {
+import React from "react";
+
+const Button = React.memo(function Button({
+  btn,
+  evaluateExpression,
+  clear,
+  handleNumClick,
+  handleOperatorClick
+}) {
   const isEqualOperator = btn === "=";
   const isClear = btn === "C";
 
-  const className = `button ${isNaN(btn) && btn !== "." ? "operator" : ""} ${isEqualOperator ? "equal" : ""}`;
+  const className = `button ${
+    isNaN(btn) && btn !== "." ? "operator" : ""
+  } ${isEqualOperator ? "equal" : ""}`;
 
   const handleClick = () => {
     if (isEqualOperator) {
@@ -26,4 +36,6 @@ export default function Button({ btn, evaluateExpression, clear, handleNumClick,
       {btn}
     </button>
   );
-}
+});
+
+export default Button;
