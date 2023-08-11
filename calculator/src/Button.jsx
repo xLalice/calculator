@@ -1,31 +1,29 @@
-import React from "react";
+export default function Button({ btn, evaluateExpression, clear, handleNumClick, handleOperatorClick }) {
+  const isEqualOperator = btn === "=";
+  const isClear = btn === "C";
 
-export default function Button(props) {
-  const isEqualOperator = props.btn === "=";
-  const isClear = props.btn === "C";
-
-  const className = `button ${isNaN(props.btn) && props.btn !== "." ? "operator" : ""} ${isEqualOperator ? "equal" : ""}`;
+  const className = `button ${isNaN(btn) && btn !== "." ? "operator" : ""} ${isEqualOperator ? "equal" : ""}`;
 
   const handleClick = () => {
     if (isEqualOperator) {
-      props.evaluateExpression();
-    } else if (isClear){
-        props.clear()
-    } else if (!isNaN(props.btn)) {
-      props.handleNumClick(props.btn);
+      evaluateExpression();
+    } else if (isClear) {
+      clear();
+    } else if (!isNaN(btn)) {
+      handleNumClick(btn);
     } else {
-      props.handleOperatorClick(props.btn);
+      handleOperatorClick(btn);
     }
   };
 
   return (
     <button
-      key={props.index}
+      key={btn}
       id={isEqualOperator ? "equal" : ""}
       className={className}
       onClick={handleClick}
     >
-      {props.btn}
+      {btn}
     </button>
   );
 }
